@@ -1,0 +1,27 @@
+{
+  "name": "fast-bot",
+  "version": "1.0.0",
+  "description": "Laravel-inspired mini Telegram bot framework for Cloudflare Workers",
+  "keywords": [
+    "telegram",
+    "bot",
+    "cloudflare-worker"
+  ],
+  "author": "NexaBuild Team",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "artisan": "./bin/artisan.js"
+  },
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "artisan": "node bin/artisan.js",
+    "make:controller": "node bin/artisan.js make:controller",
+    "make:middleware": "node bin/artisan.js make:middleware",
+    "make:guard": "node bin/artisan.js make:guard",
+    "make:model": "node bin/artisan.js make:model",
+    "route:list": "node bin/artisan.js route:list",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

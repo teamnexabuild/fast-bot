@@ -1,0 +1,4 @@
+# Copy to .dev.vars for local `wrangler dev` testing (never commit the real file).
+BOT_TOKEN=123456:your-telegram-bot-token
+TELEGRAM_SECRET=some-random-string
+ADMIN_IDS=111111111,222222222

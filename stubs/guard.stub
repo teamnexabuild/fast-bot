@@ -1,0 +1,13 @@
+import { Guard } from '../core/Guard.js';
+
+/**
+ * Guard: return true to allow, false to deny (ctx.reply(this.message) is
+ * sent automatically on denial). Attach via a route's { guards: [{{className}}] }.
+ */
+export class {{className}} extends Guard {
+  message = 'You are not allowed to do that.';
+
+  async handle(ctx) {
+    return true;
+  }
+}

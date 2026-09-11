@@ -1,0 +1,10 @@
+/**
+ * Middleware: async (ctx, next) => { ...; await next(); ... }
+ * Register globally in src/index.js via `app.router.use({{className}})`,
+ * or per-route via a route's `{ middleware: [{{className}}] }` option.
+ */
+export async function {{className}}(ctx, next) {
+  // do something before the handler runs
+  await next();
+  // do something after the handler runs
+}
