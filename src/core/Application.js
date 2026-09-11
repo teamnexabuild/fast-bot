@@ -64,13 +64,21 @@ export class Application {
       return new Response('Missing BOT_TOKEN secret.', { status: 500 });
     }
 
-    const telegram = new Telegram(env.BOT_TOKEN);
-    const webhookUrl = `${url.origin}/`.replace(/\/$/, '') + '/';
-    const extra = env.TELEGRAM_SECRET ? { secret_token: env.TELEGRAM_SECRET } : {};
+    try {
+      const telegram = new Telegram(env.BOT_TOKEN.trim());
+      const webhookUrl = `${url.origin}/`.replace(/\/$/, '') + '/';
+      const extra = env.TELEGRAM_SECRET ? { secret_token: env.TELEGRAM_SECRET.trim() } : {};
 
-    const result = await telegram.setWebhook(webhookUrl, extra);
-    return new Response(JSON.stringify({ webhookUrl, result }, null, 2), {
-      headers: { 'content-type': 'application/json' },
-    });
+      const result = await telegram.setWebhook(webhookUrl, extra);
+      return new Response(JSON.stringify({ webhookUrl, result }, null, 2), {
+        headers: { 'content-type': 'application/json' },
+      });
+    } catch (err) {
+      console.error('setWebhook failed:', err);
+      return new Response(JSON.stringify({ error: err.message }, null, 2), {
+        status: 500,
+        headers: { 'content-type': 'application/json' },
+      });
+    }
   }
 }
